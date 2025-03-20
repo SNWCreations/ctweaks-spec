@@ -2,6 +2,7 @@ package snw.mods.ctweaks.render;
 
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
+import org.jetbrains.annotations.Nullable;
 import snw.mods.ctweaks.object.ObjectUpdater;
 import snw.mods.ctweaks.object.pos.PlanePosition;
 
@@ -16,7 +17,7 @@ public interface TextRenderer extends Renderer {
 
     PlanePosition getPosition();
 
-    Component getText();
+    @Nullable Component getText();
 
     Updater newUpdater();
 
