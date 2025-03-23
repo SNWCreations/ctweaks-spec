@@ -12,6 +12,7 @@ import snw.mods.ctweaks.protocol.util.PacketReaders;
 import snw.mods.ctweaks.protocol.util.PacketWriters;
 
 import static snw.lib.protocol.util.PacketHelper.readNullable;
+import static snw.lib.protocol.util.PacketHelper.writeNullable;
 
 @Getter
 public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacketHandler> {
@@ -43,7 +44,8 @@ public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacke
     @Override
     protected void doSerialization(ByteArrayDataOutput output) {
         output.writeInt(this.id);
-        PacketWriters.COMPONENT.write(output, this.text);
+        writeNullable(output, this.text, PacketWriters.COMPONENT);
+        writeNullable(output, this.newPosition, PacketWriters.PLANE_POSITION);
     }
 
     @Override
