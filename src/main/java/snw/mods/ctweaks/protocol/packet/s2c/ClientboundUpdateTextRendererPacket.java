@@ -3,6 +3,7 @@ package snw.mods.ctweaks.protocol.packet.s2c;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import lombok.Getter;
+import lombok.ToString;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.Nullable;
 import snw.lib.protocol.packet.Packet;
@@ -14,6 +15,7 @@ import snw.mods.ctweaks.protocol.util.PacketWriters;
 import static snw.lib.protocol.util.PacketHelper.readNullable;
 import static snw.lib.protocol.util.PacketHelper.writeNullable;
 
+@ToString
 @Getter
 public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacketHandler> {
     public static final String TYPE = "update_renderer";
