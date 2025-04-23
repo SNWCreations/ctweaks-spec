@@ -7,6 +7,7 @@ import lombok.ToString;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.Nullable;
 import snw.lib.protocol.packet.Packet;
+import snw.mods.ctweaks.object.IntIdentified;
 import snw.mods.ctweaks.object.pos.PlanePosition;
 import snw.mods.ctweaks.protocol.handler.ClientboundPacketHandler;
 import snw.mods.ctweaks.protocol.util.PacketReaders;
@@ -17,7 +18,7 @@ import static snw.lib.protocol.util.PacketHelper.writeNullable;
 
 @ToString
 @Getter
-public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacketHandler> {
+public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacketHandler> implements IntIdentified {
     public static final String TYPE = "update_renderer";
 
     private final int id;
