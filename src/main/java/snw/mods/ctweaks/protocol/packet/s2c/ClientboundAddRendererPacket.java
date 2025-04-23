@@ -16,18 +16,18 @@ public class ClientboundAddRendererPacket extends Packet<ClientboundPacketHandle
     public static final String TYPE = "add_renderer";
 
     private final int id;
-    private final Key type;
+    private final Key rendererType;
 
-    public ClientboundAddRendererPacket(int id, Key type, String nonce) {
+    public ClientboundAddRendererPacket(int id, Key rendererType, String nonce) {
         super(nonce);
         this.id = id;
-        this.type = type;
+        this.rendererType = rendererType;
     }
 
     public ClientboundAddRendererPacket(ByteArrayDataInput input) {
         super(input);
         this.id = input.readInt();
-        this.type = PacketReaders.NAMESPACED_KEY.read(input);
+        this.rendererType = PacketReaders.NAMESPACED_KEY.read(input);
     }
 
     @Override
@@ -43,6 +43,6 @@ public class ClientboundAddRendererPacket extends Packet<ClientboundPacketHandle
     @Override
     protected void doSerialization(ByteArrayDataOutput output) {
         output.writeInt(this.id);
-        PacketWriters.NAMESPACED_KEY.write(output, this.type);
+        PacketWriters.NAMESPACED_KEY.write(output, this.rendererType);
     }
 }
