@@ -22,8 +22,8 @@ public interface TextRenderer extends Renderer {
     Updater newUpdater();
 
     interface Updater extends ObjectUpdater {
-        void setText(Component text);
+        Updater setText(Component text);
 
-        void setPosition(PlanePosition position);
+        Updater setPosition(PlanePosition position);
     }
 }
