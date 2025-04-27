@@ -8,14 +8,12 @@ import snw.mods.ctweaks.object.pos.PlanePosition;
 
 import static snw.mods.ctweaks.Keys.modKey;
 
-public interface TextRenderer extends Renderer {
+public interface TextRenderer extends Renderer, PlanePosition.Getter {
     Key TYPE = modKey("text");
 
     default Key getType() {
         return TYPE;
     }
-
-    PlanePosition getPosition();
 
     @Nullable Component getText();
 
