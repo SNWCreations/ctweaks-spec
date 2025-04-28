@@ -16,4 +16,10 @@ public interface Screen {
     Collection<Renderer> getRenderers();
 
     void clearRenderers();
+
+    int getWidth();
+
+    int getHeight();
+
+    boolean isNowFullScreen();
 }
