@@ -19,7 +19,7 @@ import static snw.lib.protocol.util.PacketHelper.writeNullable;
 @ToString
 @Getter
 public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacketHandler> implements IntIdentified {
-    public static final String TYPE = "update_renderer";
+    public static final String TYPE = "update_text_renderer";
 
     private final int id;
     private final @Nullable Component text;
