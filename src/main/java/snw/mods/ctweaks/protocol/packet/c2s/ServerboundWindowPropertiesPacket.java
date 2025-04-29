@@ -23,7 +23,7 @@ public class ServerboundWindowPropertiesPacket extends Packet<ServerboundPacketH
         this.nowFullScreen = nowFullScreen;
     }
 
-    protected ServerboundWindowPropertiesPacket(ByteArrayDataInput input) {
+    public ServerboundWindowPropertiesPacket(ByteArrayDataInput input) {
         super(input);
         this.width = input.readInt();
         this.height = input.readInt();
