@@ -1,5 +1,7 @@
 package snw.mods.ctweaks.entity;
 
+import net.kyori.adventure.text.Component;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.UnmodifiableView;
 import snw.mods.ctweaks.object.pos.PlanePosition;
 import snw.mods.ctweaks.render.PlayerFaceRenderer;
@@ -12,7 +14,7 @@ import java.util.UUID;
 public interface Screen {
     Player getOwner();
 
-    TextRenderer addTextRenderer(PlanePosition position);
+    TextRenderer addTextRenderer(PlanePosition position, @Nullable Component text, float scale);
 
     PlayerFaceRenderer addPlayerFaceRenderer(UUID target, PlanePosition position, float scale);
 
