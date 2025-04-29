@@ -25,14 +25,14 @@ public class ClientboundUpdatePlayerFaceRendererPacket extends Packet<Clientboun
     private final int id;
     private final UUID target;
     private final @Nullable PlanePosition position;
-    private final @Nullable Float scale;
+    private final @Nullable Integer size;
 
-    public ClientboundUpdatePlayerFaceRendererPacket(int id, UUID target, @Nullable PlanePosition position, @Nullable Float scale, String nonce) {
+    public ClientboundUpdatePlayerFaceRendererPacket(int id, UUID target, @Nullable PlanePosition position, @Nullable Integer size, String nonce) {
         super(nonce);
         this.id = id;
         this.target = target;
         this.position = position;
-        this.scale = scale;
+        this.size = size;
     }
 
     public ClientboundUpdatePlayerFaceRendererPacket(ByteArrayDataInput input) {
@@ -40,7 +40,7 @@ public class ClientboundUpdatePlayerFaceRendererPacket extends Packet<Clientboun
         this.id = input.readInt();
         this.target = PacketReaders.UUID.read(input);
         this.position = readNullable(input, snw.mods.ctweaks.protocol.util.PacketReaders.PLANE_POSITION);
-        this.scale = readNullable(input, ByteArrayDataInput::readFloat);
+        this.size = readNullable(input, ByteArrayDataInput::readInt);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class ClientboundUpdatePlayerFaceRendererPacket extends Packet<Clientboun
         output.writeInt(this.id);
         PacketWriters.UUID.write(output, this.target);
         writeNullable(output, this.position, snw.mods.ctweaks.protocol.util.PacketWriters.PLANE_POSITION);
-        writeNullable(output, this.scale, ByteArrayDataOutput::writeFloat);
+        writeNullable(output, this.size, ByteArrayDataOutput::writeInt);
     }
 
     @Override

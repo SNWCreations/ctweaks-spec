@@ -16,7 +16,7 @@ public interface Screen {
 
     TextRenderer addTextRenderer(PlanePosition position, @Nullable Component text, float scale);
 
-    PlayerFaceRenderer addPlayerFaceRenderer(UUID target, PlanePosition position, float scale);
+    PlayerFaceRenderer addPlayerFaceRenderer(UUID target, PlanePosition position, int size);
 
     @UnmodifiableView
     Collection<Renderer> getRenderers();
