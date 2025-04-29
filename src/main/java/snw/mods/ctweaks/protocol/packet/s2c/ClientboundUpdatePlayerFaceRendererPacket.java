@@ -23,11 +23,11 @@ public class ClientboundUpdatePlayerFaceRendererPacket extends Packet<Clientboun
     public static final String TYPE = "update_player_face_renderer";
 
     private final int id;
-    private final UUID target;
+    private final @Nullable UUID target;
     private final @Nullable PlanePosition position;
     private final @Nullable Integer size;
 
-    public ClientboundUpdatePlayerFaceRendererPacket(int id, UUID target, @Nullable PlanePosition position, @Nullable Integer size, String nonce) {
+    public ClientboundUpdatePlayerFaceRendererPacket(int id, @Nullable UUID target, @Nullable PlanePosition position, @Nullable Integer size, String nonce) {
         super(nonce);
         this.id = id;
         this.target = target;
@@ -38,7 +38,7 @@ public class ClientboundUpdatePlayerFaceRendererPacket extends Packet<Clientboun
     public ClientboundUpdatePlayerFaceRendererPacket(ByteArrayDataInput input) {
         super(input);
         this.id = input.readInt();
-        this.target = PacketReaders.UUID.read(input);
+        this.target = readNullable(input, PacketReaders.UUID);
         this.position = readNullable(input, snw.mods.ctweaks.protocol.util.PacketReaders.PLANE_POSITION);
         this.size = readNullable(input, ByteArrayDataInput::readInt);
     }
