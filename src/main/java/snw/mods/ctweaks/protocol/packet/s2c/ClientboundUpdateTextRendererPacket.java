@@ -24,12 +24,23 @@ public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacke
     private final int id;
     private final @Nullable Component text;
     private final @Nullable PlanePosition newPosition;
+    private final @Nullable Boolean noShadow;
+    private final @Nullable Float scale;
 
-    public ClientboundUpdateTextRendererPacket(int id, @Nullable Component text, @Nullable PlanePosition newPosition, String nonce) {
+    public ClientboundUpdateTextRendererPacket(
+            int id,
+            @Nullable Component text,
+            @Nullable PlanePosition newPosition,
+            @Nullable Boolean noShadow,
+            @Nullable Float scale,
+            String nonce
+    ) {
         super(nonce);
         this.id = id;
         this.text = text;
         this.newPosition = newPosition;
+        this.noShadow = noShadow;
+        this.scale = scale;
     }
 
     public ClientboundUpdateTextRendererPacket(ByteArrayDataInput input) {
@@ -37,6 +48,8 @@ public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacke
         this.id = input.readInt();
         this.text = readNullable(input, PacketReaders.COMPONENT);
         this.newPosition = readNullable(input, PacketReaders.PLANE_POSITION);
+        this.noShadow = readNullable(input, ByteArrayDataInput::readBoolean);
+        this.scale = readNullable(input, ByteArrayDataInput::readFloat);
     }
 
     @Override
@@ -49,6 +62,8 @@ public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacke
         output.writeInt(this.id);
         writeNullable(output, this.text, PacketWriters.COMPONENT);
         writeNullable(output, this.newPosition, PacketWriters.PLANE_POSITION);
+        writeNullable(output, this.noShadow, ByteArrayDataOutput::writeBoolean);
+        writeNullable(output, this.scale, ByteArrayDataOutput::writeFloat);
     }
 
     @Override
