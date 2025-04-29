@@ -7,7 +7,7 @@ import snw.lib.protocol.io.PacketReader;
 import snw.mods.ctweaks.object.pos.PlanePosition;
 
 @SuppressWarnings("PatternValidation")
-public final class PacketReaders {
+public final class ModPacketReaders {
     public static final PacketReader<Key> NAMESPACED_KEY;
     public static final PacketReader<Component> COMPONENT;
     public static final PacketReader<PlanePosition> PLANE_POSITION;
@@ -29,6 +29,6 @@ public final class PacketReaders {
         };
     }
 
-    private PacketReaders() {
+    private ModPacketReaders() {
     }
 }

@@ -11,6 +11,8 @@ import snw.lib.protocol.packet.Packet;
 import snw.mods.ctweaks.object.IntIdentified;
 import snw.mods.ctweaks.object.pos.PlanePosition;
 import snw.mods.ctweaks.protocol.handler.ClientboundPacketHandler;
+import snw.mods.ctweaks.protocol.util.ModPacketReaders;
+import snw.mods.ctweaks.protocol.util.ModPacketWriters;
 
 import java.util.UUID;
 
@@ -39,7 +41,7 @@ public class ClientboundUpdatePlayerFaceRendererPacket extends Packet<Clientboun
         super(input);
         this.id = input.readInt();
         this.target = readNullable(input, PacketReaders.UUID);
-        this.position = readNullable(input, snw.mods.ctweaks.protocol.util.PacketReaders.PLANE_POSITION);
+        this.position = readNullable(input, ModPacketReaders.PLANE_POSITION);
         this.size = readNullable(input, ByteArrayDataInput::readInt);
     }
 
@@ -52,7 +54,7 @@ public class ClientboundUpdatePlayerFaceRendererPacket extends Packet<Clientboun
     protected void doSerialization(ByteArrayDataOutput output) {
         output.writeInt(this.id);
         PacketWriters.UUID.write(output, this.target);
-        writeNullable(output, this.position, snw.mods.ctweaks.protocol.util.PacketWriters.PLANE_POSITION);
+        writeNullable(output, this.position, ModPacketWriters.PLANE_POSITION);
         writeNullable(output, this.size, ByteArrayDataOutput::writeInt);
     }
 

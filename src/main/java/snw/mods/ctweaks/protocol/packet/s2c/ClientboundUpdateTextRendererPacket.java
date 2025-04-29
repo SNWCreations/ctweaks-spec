@@ -10,8 +10,8 @@ import snw.lib.protocol.packet.Packet;
 import snw.mods.ctweaks.object.IntIdentified;
 import snw.mods.ctweaks.object.pos.PlanePosition;
 import snw.mods.ctweaks.protocol.handler.ClientboundPacketHandler;
-import snw.mods.ctweaks.protocol.util.PacketReaders;
-import snw.mods.ctweaks.protocol.util.PacketWriters;
+import snw.mods.ctweaks.protocol.util.ModPacketReaders;
+import snw.mods.ctweaks.protocol.util.ModPacketWriters;
 
 import static snw.lib.protocol.util.PacketHelper.readNullable;
 import static snw.lib.protocol.util.PacketHelper.writeNullable;
@@ -46,8 +46,8 @@ public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacke
     public ClientboundUpdateTextRendererPacket(ByteArrayDataInput input) {
         super(input);
         this.id = input.readInt();
-        this.text = readNullable(input, PacketReaders.COMPONENT);
-        this.newPosition = readNullable(input, PacketReaders.PLANE_POSITION);
+        this.text = readNullable(input, ModPacketReaders.COMPONENT);
+        this.newPosition = readNullable(input, ModPacketReaders.PLANE_POSITION);
         this.noShadow = readNullable(input, ByteArrayDataInput::readBoolean);
         this.scale = readNullable(input, ByteArrayDataInput::readFloat);
     }
@@ -60,8 +60,8 @@ public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacke
     @Override
     protected void doSerialization(ByteArrayDataOutput output) {
         output.writeInt(this.id);
-        writeNullable(output, this.text, PacketWriters.COMPONENT);
-        writeNullable(output, this.newPosition, PacketWriters.PLANE_POSITION);
+        writeNullable(output, this.text, ModPacketWriters.COMPONENT);
+        writeNullable(output, this.newPosition, ModPacketWriters.PLANE_POSITION);
         writeNullable(output, this.noShadow, ByteArrayDataOutput::writeBoolean);
         writeNullable(output, this.scale, ByteArrayDataOutput::writeFloat);
     }

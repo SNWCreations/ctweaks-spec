@@ -4,11 +4,8 @@ import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import lombok.Getter;
 import lombok.ToString;
-import net.kyori.adventure.key.Key;
 import snw.lib.protocol.packet.Packet;
 import snw.mods.ctweaks.protocol.handler.ClientboundPacketHandler;
-import snw.mods.ctweaks.protocol.util.PacketReaders;
-import snw.mods.ctweaks.protocol.util.PacketWriters;
 
 @ToString
 @Getter

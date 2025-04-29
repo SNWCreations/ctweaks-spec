@@ -7,8 +7,8 @@ import lombok.ToString;
 import net.kyori.adventure.key.Key;
 import snw.lib.protocol.packet.Packet;
 import snw.mods.ctweaks.protocol.handler.ClientboundPacketHandler;
-import snw.mods.ctweaks.protocol.util.PacketReaders;
-import snw.mods.ctweaks.protocol.util.PacketWriters;
+import snw.mods.ctweaks.protocol.util.ModPacketReaders;
+import snw.mods.ctweaks.protocol.util.ModPacketWriters;
 
 @ToString
 @Getter
@@ -27,7 +27,7 @@ public class ClientboundAddRendererPacket extends Packet<ClientboundPacketHandle
     public ClientboundAddRendererPacket(ByteArrayDataInput input) {
         super(input);
         this.id = input.readInt();
-        this.rendererType = PacketReaders.NAMESPACED_KEY.read(input);
+        this.rendererType = ModPacketReaders.NAMESPACED_KEY.read(input);
     }
 
     @Override
@@ -43,6 +43,6 @@ public class ClientboundAddRendererPacket extends Packet<ClientboundPacketHandle
     @Override
     protected void doSerialization(ByteArrayDataOutput output) {
         output.writeInt(this.id);
-        PacketWriters.NAMESPACED_KEY.write(output, this.rendererType);
+        ModPacketWriters.NAMESPACED_KEY.write(output, this.rendererType);
     }
 }

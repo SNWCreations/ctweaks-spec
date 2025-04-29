@@ -6,7 +6,7 @@ import net.kyori.adventure.text.serializer.json.JSONComponentSerializer;
 import snw.lib.protocol.io.PacketWriter;
 import snw.mods.ctweaks.object.pos.PlanePosition;
 
-public final class PacketWriters {
+public final class ModPacketWriters {
     public static final PacketWriter<Key> NAMESPACED_KEY;
     public static final PacketWriter<Component> COMPONENT;
     public static final PacketWriter<PlanePosition> PLANE_POSITION;
@@ -28,6 +28,6 @@ public final class PacketWriters {
         };
     }
 
-    private PacketWriters() {
+    private ModPacketWriters() {
     }
 }
