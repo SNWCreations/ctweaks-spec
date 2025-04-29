@@ -12,5 +12,7 @@ public interface ClientboundPacketHandler extends PacketHandler {
 
     void handleRemoveRenderer(ClientboundRemoveRendererPacket packet);
 
+    void handleUpdatePlayerFaceRenderer(ClientboundUpdatePlayerFaceRendererPacket packet);
+
     void handleUpdateTextRenderer(ClientboundUpdateTextRendererPacket packet);
 }

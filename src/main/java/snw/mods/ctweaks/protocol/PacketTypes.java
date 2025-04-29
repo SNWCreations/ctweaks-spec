@@ -22,6 +22,7 @@ public final class PacketTypes {
                 register(ClientboundClearRendererPacket.TYPE, ClientboundClearRendererPacket::new);
                 register(ClientboundHelloPacket.TYPE, ClientboundHelloPacket::new);
                 register(ClientboundRemoveRendererPacket.TYPE, ClientboundRemoveRendererPacket::new);
+                register(ClientboundUpdatePlayerFaceRendererPacket.TYPE, ClientboundUpdatePlayerFaceRendererPacket::new);
                 register(ClientboundUpdateTextRendererPacket.TYPE, ClientboundUpdateTextRendererPacket::new);
             }
         };
