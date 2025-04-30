@@ -3,7 +3,7 @@ package snw.mods.ctweaks.protocol;
 import snw.lib.protocol.packet.type.PacketTypeSet;
 import snw.mods.ctweaks.protocol.handler.ClientboundPacketHandler;
 import snw.mods.ctweaks.protocol.handler.ServerboundPacketHandler;
-import snw.mods.ctweaks.protocol.packet.c2s.ServerboundWindowPropertiesPacket;
+import snw.mods.ctweaks.protocol.packet.c2s.*;
 import snw.mods.ctweaks.protocol.packet.s2c.*;
 
 public final class PacketTypes {
@@ -13,6 +13,7 @@ public final class PacketTypes {
     static {
         CLIENTSIDE = new PacketTypeSet<>() {
             {
+                register(ServerboundReadyPacket.TYPE, ServerboundReadyPacket::new);
                 register(ServerboundWindowPropertiesPacket.TYPE, ServerboundWindowPropertiesPacket::new);
             }
         };
