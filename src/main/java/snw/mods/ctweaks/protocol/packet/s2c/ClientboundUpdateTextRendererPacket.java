@@ -26,6 +26,7 @@ public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacke
     private final @Nullable PlanePosition newPosition;
     private final @Nullable Boolean noShadow;
     private final @Nullable Float scale;
+    private final @Nullable Integer outlineColor;
 
     public ClientboundUpdateTextRendererPacket(
             int id,
@@ -33,6 +34,7 @@ public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacke
             @Nullable PlanePosition newPosition,
             @Nullable Boolean noShadow,
             @Nullable Float scale,
+            @Nullable Integer outlineColor,
             String nonce
     ) {
         super(nonce);
@@ -41,6 +43,7 @@ public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacke
         this.newPosition = newPosition;
         this.noShadow = noShadow;
         this.scale = scale;
+        this.outlineColor = outlineColor;
     }
 
     public ClientboundUpdateTextRendererPacket(ByteArrayDataInput input) {
@@ -50,6 +53,7 @@ public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacke
         this.newPosition = readNullable(input, ModPacketReaders.PLANE_POSITION);
         this.noShadow = readNullable(input, ByteArrayDataInput::readBoolean);
         this.scale = readNullable(input, ByteArrayDataInput::readFloat);
+        this.outlineColor = readNullable(input, ByteArrayDataInput::readInt);
     }
 
     @Override
@@ -64,6 +68,7 @@ public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacke
         writeNullable(output, this.newPosition, ModPacketWriters.PLANE_POSITION);
         writeNullable(output, this.noShadow, ByteArrayDataOutput::writeBoolean);
         writeNullable(output, this.scale, ByteArrayDataOutput::writeFloat);
+        writeNullable(output, this.outlineColor, ByteArrayDataOutput::writeInt);
     }
 
     @Override

@@ -3,6 +3,7 @@ package snw.mods.ctweaks.render;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import org.jetbrains.annotations.Nullable;
+import snw.mods.ctweaks.object.ObjectBuilder;
 import snw.mods.ctweaks.object.ObjectUpdater;
 import snw.mods.ctweaks.object.Scaled;
 import snw.mods.ctweaks.object.pos.PlanePosition;
@@ -22,11 +23,19 @@ public interface TextRenderer extends Renderer, PlanePosition.Getter, Scaled {
 
     Updater newUpdater();
 
-    interface Updater extends ObjectUpdater, Scaled.Updater<Updater> {
-        Updater setText(Component text);
+    interface PropertySetter<T extends PropertySetter<T>> extends Scaled.PropertySetter<T> {
+        T setText(Component text);
 
-        Updater setPosition(PlanePosition position);
+        T setPosition(PlanePosition position);
 
-        Updater setNoShadow(boolean noShadow);
+        T setNoShadow(boolean noShadow);
+
+        T setOutlineColor(int outlineColor);
+    }
+
+    interface Updater extends ObjectUpdater, PropertySetter<Updater> {
+    }
+
+    interface Builder extends ObjectBuilder<TextRenderer>, PropertySetter<Builder> {
     }
 }

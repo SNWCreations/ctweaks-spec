@@ -4,7 +4,7 @@ public interface IntSized {
 
     int getSize();
 
-    interface Updater<T extends Updater<T>> {
+    interface PropertySetter<T extends PropertySetter<T>> {
         T setSize(int size);
     }
 }

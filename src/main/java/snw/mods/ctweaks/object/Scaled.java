@@ -4,7 +4,7 @@ public interface Scaled {
 
     float getScale();
 
-    interface Updater<T extends Updater<T>> {
+    interface PropertySetter<T extends PropertySetter<T>> {
         T setScale(float scale);
     }
 }

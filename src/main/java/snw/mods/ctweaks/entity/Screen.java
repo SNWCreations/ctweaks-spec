@@ -14,9 +14,13 @@ import java.util.UUID;
 public interface Screen {
     Player getOwner();
 
-    TextRenderer addTextRenderer(PlanePosition position, @Nullable Component text, float scale);
+    TextRenderer addTextRenderer(PlanePosition position, @Nullable Component text);
 
-    PlayerFaceRenderer addPlayerFaceRenderer(UUID target, PlanePosition position, int size);
+    TextRenderer.Builder textRendererBuilder();
+
+    PlayerFaceRenderer addPlayerFaceRenderer(UUID target, PlanePosition position);
+
+    PlayerFaceRenderer.Builder playerFaceRendererBuilder();
 
     @UnmodifiableView
     Collection<Renderer> getRenderers();

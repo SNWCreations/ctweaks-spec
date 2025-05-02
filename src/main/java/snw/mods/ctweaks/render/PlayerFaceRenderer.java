@@ -2,6 +2,7 @@ package snw.mods.ctweaks.render;
 
 import net.kyori.adventure.key.Key;
 import snw.mods.ctweaks.object.IntSized;
+import snw.mods.ctweaks.object.ObjectBuilder;
 import snw.mods.ctweaks.object.ObjectUpdater;
 import snw.mods.ctweaks.object.pos.PlanePosition;
 
@@ -21,11 +22,17 @@ public interface PlayerFaceRenderer extends Renderer, PlanePosition.Getter, IntS
 
     Updater newUpdater();
 
-    interface Updater extends ObjectUpdater, IntSized.Updater<Updater> {
+    interface PropertySetter<T extends PropertySetter<T>> extends IntSized.PropertySetter<T> {
 
-        Updater setTarget(UUID target);
+        T setTarget(UUID target);
 
-        Updater setPosition(PlanePosition position);
+        T setPosition(PlanePosition position);
 
+    }
+
+    interface Updater extends ObjectUpdater, PropertySetter<Updater> {
+    }
+
+    interface Builder extends ObjectBuilder<PlayerFaceRenderer>, PropertySetter<Builder> {
     }
 }
