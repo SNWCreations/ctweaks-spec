@@ -53,7 +53,7 @@ public class ClientboundUpdatePlayerFaceRendererPacket extends Packet<Clientboun
     @Override
     protected void doSerialization(ByteArrayDataOutput output) {
         output.writeInt(this.id);
-        PacketWriters.UUID.write(output, this.target);
+        writeNullable(output, this.target, PacketWriters.UUID);
         writeNullable(output, this.position, ModPacketWriters.PLANE_POSITION);
         writeNullable(output, this.size, ByteArrayDataOutput::writeInt);
     }
