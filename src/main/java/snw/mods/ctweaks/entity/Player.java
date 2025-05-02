@@ -8,4 +8,6 @@ public interface Player {
     Screen getScreen();
 
     boolean isOnline();
+
+    boolean isModReady();
 }
