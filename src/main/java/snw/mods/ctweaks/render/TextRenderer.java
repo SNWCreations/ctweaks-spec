@@ -13,6 +13,7 @@ import static snw.mods.ctweaks.Keys.modKey;
 public interface TextRenderer extends Renderer, PlanePosition.Getter, Scaled {
     Key TYPE = modKey("text");
 
+    @Override
     default Key getType() {
         return TYPE;
     }
