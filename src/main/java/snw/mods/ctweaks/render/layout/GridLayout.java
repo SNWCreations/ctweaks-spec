@@ -1,7 +1,6 @@
 package snw.mods.ctweaks.render.layout;
 
 import net.kyori.adventure.key.Key;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Range;
 import snw.mods.ctweaks.object.Spaced;
 import snw.mods.ctweaks.object.SpacedLike;
@@ -27,7 +26,9 @@ public interface GridLayout extends PlaneLayout, SpacedLike {
     interface PropertySetter<T extends PropertySetter<T>> extends PlaneLayout.PropertySetter<T>, Spaced.PropertySetter<T> {
         T addChild(LayoutElement element);
 
-        T setChild(int index, @Nullable LayoutElement element);
+        T addChild(int index, LayoutElement element);
+
+        T setChild(int index, LayoutElement element);
 
         T setRowSpacing(@Range(from = 0, to = Integer.MAX_VALUE) int rowSpacing);
 
