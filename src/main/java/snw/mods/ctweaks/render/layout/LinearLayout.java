@@ -14,6 +14,8 @@ public interface LinearLayout extends PlaneLayout, Orientation.Getter, Spaced {
         return TYPE;
     }
 
+    Updater newUpdater();
+
     interface PropertySetter<T extends PropertySetter<T>> extends
             PlaneLayout.PropertySetter<T>,
             Orientation.PropertySetter<T>,

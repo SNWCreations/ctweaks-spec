@@ -23,6 +23,8 @@ public interface GridLayout extends PlaneLayout, SpacedLike {
 
     int getColumnCount();
 
+    Updater newUpdater();
+
     interface PropertySetter<T extends PropertySetter<T>> extends PlaneLayout.PropertySetter<T>, Spaced.PropertySetter<T> {
         T addChild(LayoutElement element);
 
