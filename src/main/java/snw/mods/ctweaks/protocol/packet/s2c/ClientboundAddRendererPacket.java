@@ -6,28 +6,29 @@ import lombok.Getter;
 import lombok.ToString;
 import net.kyori.adventure.key.Key;
 import snw.lib.protocol.packet.Packet;
+import snw.mods.ctweaks.object.IntKeyed;
 import snw.mods.ctweaks.protocol.handler.ClientboundPacketHandler;
-import snw.mods.ctweaks.protocol.util.ModPacketReaders;
-import snw.mods.ctweaks.protocol.util.ModPacketWriters;
 
 @ToString
 @Getter
 public class ClientboundAddRendererPacket extends Packet<ClientboundPacketHandler> {
     public static final String TYPE = "add_renderer";
 
-    private final int id;
-    private final Key rendererType;
+    private final IntKeyed.Descriptor descriptor;
 
+    @Deprecated
     public ClientboundAddRendererPacket(int id, Key rendererType, String nonce) {
+        this(new IntKeyed.Descriptor(id, rendererType), nonce);
+    }
+
+    public ClientboundAddRendererPacket(IntKeyed.Descriptor descriptor, String nonce) {
         super(nonce);
-        this.id = id;
-        this.rendererType = rendererType;
+        this.descriptor = descriptor;
     }
 
     public ClientboundAddRendererPacket(ByteArrayDataInput input) {
         super(input);
-        this.id = input.readInt();
-        this.rendererType = ModPacketReaders.NAMESPACED_KEY.read(input);
+        this.descriptor = IntKeyed.Descriptor.READER.read(input);
     }
 
     @Override
@@ -42,7 +43,6 @@ public class ClientboundAddRendererPacket extends Packet<ClientboundPacketHandle
 
     @Override
     protected void doSerialization(ByteArrayDataOutput output) {
-        output.writeInt(this.id);
-        ModPacketWriters.NAMESPACED_KEY.write(output, this.rendererType);
+        IntKeyed.Descriptor.WRITER.write(output, this.descriptor);
     }
 }

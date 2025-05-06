@@ -24,10 +24,8 @@ public interface TextRenderer extends Renderer, PlanePosition.Getter, Scaled {
 
     Updater newUpdater();
 
-    interface PropertySetter<T extends PropertySetter<T>> extends Scaled.PropertySetter<T> {
+    interface PropertySetter<T extends PropertySetter<T>> extends Scaled.PropertySetter<T>, Renderer.PropertySetter<T> {
         T setText(Component text);
-
-        T setPosition(PlanePosition position);
 
         T setNoShadow(boolean noShadow);
 

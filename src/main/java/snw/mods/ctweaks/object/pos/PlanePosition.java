@@ -16,6 +16,10 @@ public record PlanePosition(
         PlanePosition getPosition();
     }
 
+    public interface PropertySetter<T extends PropertySetter<T>> {
+        T setPosition(PlanePosition position);
+    }
+
     public static PlanePosition planePos(int x, int y) {
         return new PlanePosition(x, y);
     }

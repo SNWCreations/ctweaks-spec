@@ -1,0 +1,39 @@
+package snw.mods.ctweaks.render.layout;
+
+import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.UnmodifiableView;
+import snw.mods.ctweaks.object.*;
+import snw.mods.ctweaks.render.Renderable;
+
+import java.util.List;
+import java.util.function.Consumer;
+
+import static snw.mods.ctweaks.Keys.modKey;
+
+public interface Layout extends LayoutElement, Renderable, KeyTyped, Removable, IntIdentified {
+    Key ELEMENT_TYPE = modKey("layout");
+
+    @Override
+    default Key getElementType() {
+        return ELEMENT_TYPE;
+    }
+
+    @UnmodifiableView
+    List<LayoutElement> getChildren();
+
+    void visitChildren(Consumer<LayoutElement> visitor);
+
+    void clear();
+
+    interface PropertySetter<T extends PropertySetter<T>> extends LayoutElement.PropertySetter<T> {
+    }
+
+    interface Updater<T extends Updater<T>> extends ObjectUpdater, PropertySetter<T> {
+        T removeChild(LayoutElement element);
+
+        T removeChild(int index);
+    }
+
+    interface Builder<T extends Builder<T, R>, R extends Layout> extends ObjectBuilder<R>, PropertySetter<T> {
+    }
+}

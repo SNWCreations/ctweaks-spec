@@ -22,12 +22,8 @@ public interface PlayerFaceRenderer extends Renderer, PlanePosition.Getter, IntS
 
     Updater newUpdater();
 
-    interface PropertySetter<T extends PropertySetter<T>> extends IntSized.PropertySetter<T> {
-
+    interface PropertySetter<T extends PropertySetter<T>> extends IntSized.PropertySetter<T>, PlanePosition.PropertySetter<T> {
         T setTarget(UUID target);
-
-        T setPosition(PlanePosition position);
-
     }
 
     interface Updater extends ObjectUpdater, PropertySetter<Updater> {

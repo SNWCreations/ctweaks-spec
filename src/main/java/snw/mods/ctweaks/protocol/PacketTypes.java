@@ -19,10 +19,15 @@ public final class PacketTypes {
         };
         SERVERSIDE = new PacketTypeSet<>() {
             {
+                register(ClientboundAddLayoutPacket.TYPE, ClientboundAddLayoutPacket::new);
                 register(ClientboundAddRendererPacket.TYPE, ClientboundAddRendererPacket::new);
+                register(ClientboundClearLayoutPacket.TYPE, ClientboundClearLayoutPacket::new);
                 register(ClientboundClearRendererPacket.TYPE, ClientboundClearRendererPacket::new);
                 register(ClientboundHelloPacket.TYPE, ClientboundHelloPacket::new);
+                register(ClientboundRemoveLayoutPacket.TYPE, ClientboundRemoveLayoutPacket::new);
                 register(ClientboundRemoveRendererPacket.TYPE, ClientboundRemoveRendererPacket::new);
+                register(ClientboundUpdateGridLayoutPacket.TYPE, ClientboundUpdateGridLayoutPacket::new);
+                register(ClientboundUpdateLinearLayoutPacket.TYPE, ClientboundUpdateLinearLayoutPacket::new);
                 register(ClientboundUpdatePlayerFaceRendererPacket.TYPE, ClientboundUpdatePlayerFaceRendererPacket::new);
                 register(ClientboundUpdateTextRendererPacket.TYPE, ClientboundUpdateTextRendererPacket::new);
             }
