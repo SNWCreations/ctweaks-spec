@@ -37,6 +37,8 @@ public class ClientboundUpdateGridLayoutPacket extends Packet<ClientboundPacketH
     private final @Nullable Optional<Rectangle> newRange;
     private final @Nullable Integer rowSpacing;
     private final @Nullable Integer columnSpacing;
+    private final @Nullable Integer rowCount;
+    private final @Nullable Integer columnCount;
 
     public ClientboundUpdateGridLayoutPacket(
             int id,
@@ -45,6 +47,8 @@ public class ClientboundUpdateGridLayoutPacket extends Packet<ClientboundPacketH
             @Nullable Optional<Rectangle> newRange,
             @Nullable Integer rowSpacing,
             @Nullable Integer columnSpacing,
+            @Nullable Integer rowCount,
+            @Nullable Integer columnCount,
             String nonce
     ) {
         super(nonce);
@@ -54,6 +58,8 @@ public class ClientboundUpdateGridLayoutPacket extends Packet<ClientboundPacketH
         this.newRange = newRange;
         this.rowSpacing = rowSpacing;
         this.columnSpacing = columnSpacing;
+        this.rowCount = rowCount;
+        this.columnCount = columnCount;
     }
 
     public ClientboundUpdateGridLayoutPacket(ByteArrayDataInput input) {
@@ -64,6 +70,8 @@ public class ClientboundUpdateGridLayoutPacket extends Packet<ClientboundPacketH
         this.newRange = readNullable(input, optionalReader(ModPacketReaders.RECTANGLE));
         this.rowSpacing = readNullable(input, ByteArrayDataInput::readInt);
         this.columnSpacing = readNullable(input, ByteArrayDataInput::readInt);
+        this.rowCount = readNullable(input, ByteArrayDataInput::readInt);
+        this.columnCount = readNullable(input, ByteArrayDataInput::readInt);
     }
 
     @Override
@@ -79,6 +87,8 @@ public class ClientboundUpdateGridLayoutPacket extends Packet<ClientboundPacketH
         writeNullable(output, this.newRange, optionalWriter(ModPacketWriters.RECTANGLE));
         writeNullable(output, this.rowSpacing, ByteArrayDataOutput::writeInt);
         writeNullable(output, this.columnSpacing, ByteArrayDataOutput::writeInt);
+        writeNullable(output, this.rowCount, ByteArrayDataOutput::writeInt);
+        writeNullable(output, this.columnCount, ByteArrayDataOutput::writeInt);
     }
 
     @Override
