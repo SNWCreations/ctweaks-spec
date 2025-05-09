@@ -14,6 +14,7 @@ public final class PacketTypes {
         CLIENTSIDE = new PacketTypeSet<>() {
             {
                 register(ServerboundReadyPacket.TYPE, ServerboundReadyPacket::new);
+                register(ServerboundSetObjectPlanePosPacket.TYPE, ServerboundSetObjectPlanePosPacket::new);
                 register(ServerboundWindowPropertiesPacket.TYPE, ServerboundWindowPropertiesPacket::new);
             }
         };
