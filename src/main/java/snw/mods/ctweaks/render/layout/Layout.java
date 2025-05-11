@@ -26,6 +26,7 @@ public interface Layout extends LayoutElement, Renderable, KeyTyped, Removable, 
     void clear();
 
     interface PropertySetter<T extends PropertySetter<T>> extends LayoutElement.PropertySetter<T> {
+        T setAfterUpdateCallback(Runnable callback);
     }
 
     interface Updater<T extends Updater<T>> extends ObjectUpdater, PropertySetter<T> {
