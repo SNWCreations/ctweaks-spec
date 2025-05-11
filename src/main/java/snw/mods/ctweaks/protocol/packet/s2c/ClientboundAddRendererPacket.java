@@ -4,7 +4,6 @@ import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import lombok.Getter;
 import lombok.ToString;
-import net.kyori.adventure.key.Key;
 import snw.lib.protocol.packet.Packet;
 import snw.mods.ctweaks.object.IntKeyed;
 import snw.mods.ctweaks.protocol.handler.ClientboundPacketHandler;
@@ -15,11 +14,6 @@ public class ClientboundAddRendererPacket extends Packet<ClientboundPacketHandle
     public static final String TYPE = "add_renderer";
 
     private final IntKeyed.Descriptor descriptor;
-
-    @Deprecated
-    public ClientboundAddRendererPacket(int id, Key rendererType, String nonce) {
-        this(new IntKeyed.Descriptor(id, rendererType), nonce);
-    }
 
     public ClientboundAddRendererPacket(IntKeyed.Descriptor descriptor, String nonce) {
         super(nonce);
