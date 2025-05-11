@@ -30,10 +30,10 @@ public interface Screen {
     LinearLayout.Builder linearLayoutBuilder();
 
     @UnmodifiableView
-    Collection<Renderer> getRenderers();
+    Collection<? extends Renderer> getRenderers();
 
     @UnmodifiableView
-    Collection<Layout> getLayouts();
+    Collection<? extends Layout> getLayouts();
 
     void clearRenderers();
 
