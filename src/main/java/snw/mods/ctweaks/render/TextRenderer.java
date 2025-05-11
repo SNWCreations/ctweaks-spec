@@ -10,7 +10,7 @@ import snw.mods.ctweaks.object.pos.PlanePosition;
 
 import static snw.mods.ctweaks.Keys.modKey;
 
-public interface TextRenderer extends Renderer, PlanePosition.Getter, Scaled {
+public interface TextRenderer extends Renderer, PlanePosition.Getter, PlanePosition.Setter, Scaled {
     Key TYPE = modKey("text");
 
     @Override

@@ -10,7 +10,7 @@ import java.util.UUID;
 
 import static snw.mods.ctweaks.Keys.modKey;
 
-public interface PlayerFaceRenderer extends Renderer, PlanePosition.Getter, IntSized {
+public interface PlayerFaceRenderer extends Renderer, PlanePosition.Getter, PlanePosition.Setter, IntSized {
     Key TYPE = modKey("player_face");
 
     @Override

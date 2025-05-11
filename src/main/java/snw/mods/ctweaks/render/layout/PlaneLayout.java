@@ -6,7 +6,7 @@ import snw.mods.ctweaks.object.pos.PlanePosition;
 import snw.mods.ctweaks.object.range.Ranged;
 import snw.mods.ctweaks.object.range.Rectangle;
 
-public interface PlaneLayout extends Layout, PlanePosition.Getter, Ranged<@Nullable Rectangle> {
+public interface PlaneLayout extends Layout, PlanePosition.Getter, PlanePosition.Setter, Ranged<@Nullable Rectangle> {
 
     interface PropertySetter<T extends PropertySetter<T>> extends
             Layout.PropertySetter<T>,
