@@ -7,11 +7,11 @@ import snw.mods.ctweaks.render.layout.LayoutElement;
 import static snw.mods.ctweaks.Keys.modKey;
 
 public interface Renderer extends Renderable, Removable, LayoutElement {
-    Key ELEMENT_TYPE = modKey("renderer");
+    Key TYPE = modKey("renderer");
 
     @Override
-    default Key getElementType() {
-        return ELEMENT_TYPE;
+    default Key getType() {
+        return TYPE;
     }
 
     interface PropertySetter<T extends PropertySetter<T>> extends LayoutElement.PropertySetter<T> {

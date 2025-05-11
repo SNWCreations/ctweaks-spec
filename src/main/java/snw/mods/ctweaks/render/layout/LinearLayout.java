@@ -7,11 +7,11 @@ import snw.mods.ctweaks.object.Spaced;
 import static snw.mods.ctweaks.Keys.modKey;
 
 public interface LinearLayout extends PlaneLayout, Orientation.Getter, Spaced {
-    Key TYPE = modKey("linear");
+    Key EXACT_TYPE = modKey("linear");
 
     @Override
-    default Key getType() {
-        return TYPE;
+    default Key getExactType() {
+        return EXACT_TYPE;
     }
 
     Updater newUpdater();

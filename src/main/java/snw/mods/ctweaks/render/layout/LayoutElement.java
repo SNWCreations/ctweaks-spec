@@ -5,7 +5,7 @@ import snw.mods.ctweaks.object.IntKeyed;
 import snw.mods.ctweaks.object.pos.PlanePosition;
 
 public interface LayoutElement extends IntKeyed {
-    Key getElementType();
+    Key getExactType();
 
     interface PropertySetter<T extends PropertySetter<T>> extends PlanePosition.PropertySetter<T> {
     }

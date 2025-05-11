@@ -10,12 +10,12 @@ import java.util.function.Consumer;
 
 import static snw.mods.ctweaks.Keys.modKey;
 
-public interface Layout extends LayoutElement, Renderable, KeyTyped, Removable, IntIdentified {
-    Key ELEMENT_TYPE = modKey("layout");
+public interface Layout extends LayoutElement, Renderable, Removable, IntIdentified {
+    Key TYPE = modKey("layout");
 
     @Override
-    default Key getElementType() {
-        return ELEMENT_TYPE;
+    default Key getType() {
+        return TYPE;
     }
 
     @UnmodifiableView

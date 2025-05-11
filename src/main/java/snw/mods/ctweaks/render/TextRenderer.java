@@ -11,11 +11,11 @@ import snw.mods.ctweaks.object.pos.PlanePosition;
 import static snw.mods.ctweaks.Keys.modKey;
 
 public interface TextRenderer extends Renderer, PlanePosition.Getter, PlanePosition.Setter, Scaled {
-    Key TYPE = modKey("text");
+    Key EXACT_TYPE = modKey("text");
 
     @Override
-    default Key getType() {
-        return TYPE;
+    default Key getExactType() {
+        return EXACT_TYPE;
     }
 
     @Nullable Component getText();

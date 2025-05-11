@@ -8,11 +8,11 @@ import snw.mods.ctweaks.object.SpacedLike;
 import static snw.mods.ctweaks.Keys.modKey;
 
 public interface GridLayout extends PlaneLayout, SpacedLike {
-    Key TYPE = modKey("grid");
+    Key EXACT_TYPE = modKey("grid");
 
     @Override
-    default Key getType() {
-        return TYPE;
+    default Key getExactType() {
+        return EXACT_TYPE;
     }
 
     int getRowSpacing();
