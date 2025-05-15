@@ -18,6 +18,8 @@ public interface Layout extends LayoutElement, Renderable, Removable, IntIdentif
         return TYPE;
     }
 
+    void arrangeElements();
+
     @UnmodifiableView
     List<LayoutElement> getChildren();
 

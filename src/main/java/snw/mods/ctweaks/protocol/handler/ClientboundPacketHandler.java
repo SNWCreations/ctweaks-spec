@@ -8,6 +8,8 @@ public interface ClientboundPacketHandler extends PacketHandler {
 
     void handleAddRenderer(ClientboundAddRendererPacket packet);
 
+    void handleArrangeLayout(ClientboundArrangeLayoutPacket packet);
+
     void handleClearLayout(ClientboundClearLayoutPacket packet);
 
     void handleClearRenderer(ClientboundClearRendererPacket packet);
