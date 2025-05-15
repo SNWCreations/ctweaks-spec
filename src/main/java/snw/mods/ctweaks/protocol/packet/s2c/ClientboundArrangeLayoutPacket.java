@@ -1,10 +1,14 @@
 package snw.mods.ctweaks.protocol.packet.s2c;
 
 import com.google.common.io.ByteArrayDataOutput;
+import lombok.Getter;
+import lombok.ToString;
 import snw.lib.protocol.packet.Packet;
 import snw.mods.ctweaks.object.IntKeyed;
 import snw.mods.ctweaks.protocol.handler.ClientboundPacketHandler;
 
+@ToString
+@Getter
 public class ClientboundArrangeLayoutPacket extends Packet<ClientboundPacketHandler> {
     public static final String TYPE = "arrange_layout";
 
