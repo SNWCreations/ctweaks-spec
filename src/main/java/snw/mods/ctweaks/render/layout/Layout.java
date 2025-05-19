@@ -1,6 +1,7 @@
 package snw.mods.ctweaks.render.layout;
 
 import net.kyori.adventure.key.Key;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.UnmodifiableView;
 import snw.mods.ctweaks.object.*;
 import snw.mods.ctweaks.render.Renderable;
@@ -18,7 +19,7 @@ public interface Layout extends LayoutElement, Renderable, Removable, IntIdentif
         return TYPE;
     }
 
-    void arrangeElements();
+    void arrangeElements(@Nullable Runnable onFinish);
 
     @UnmodifiableView
     List<LayoutElement> getChildren();
