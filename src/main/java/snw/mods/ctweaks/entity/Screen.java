@@ -17,11 +17,15 @@ import java.util.UUID;
 public interface Screen {
     Player getOwner();
 
-    TextRenderer addTextRenderer(PlanePosition position, @Nullable Component text);
+    TextRenderer addTextRenderer();
+
+    TextRenderer addTextRenderer(@Nullable Component text, @Nullable PlanePosition position);
 
     TextRenderer.Builder textRendererBuilder();
 
-    PlayerFaceRenderer addPlayerFaceRenderer(UUID target, PlanePosition position);
+    PlayerFaceRenderer addPlayerFaceRenderer(UUID target);
+
+    PlayerFaceRenderer addPlayerFaceRenderer(UUID target, @Nullable PlanePosition position);
 
     PlayerFaceRenderer.Builder playerFaceRendererBuilder();
 
