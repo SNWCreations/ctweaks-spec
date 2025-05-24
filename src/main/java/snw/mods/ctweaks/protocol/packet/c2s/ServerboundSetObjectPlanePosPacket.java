@@ -9,6 +9,7 @@ import snw.mods.ctweaks.object.IntKeyed;
 import snw.mods.ctweaks.object.pos.PlanePosition;
 import snw.mods.ctweaks.protocol.handler.ServerboundPacketHandler;
 import snw.mods.ctweaks.protocol.util.ModPacketReaders;
+import snw.mods.ctweaks.protocol.util.ModPacketWriters;
 
 @ToString
 @Getter
@@ -38,6 +39,7 @@ public class ServerboundSetObjectPlanePosPacket extends Packet<ServerboundPacket
     @Override
     protected void doSerialization(ByteArrayDataOutput output) {
         IntKeyed.Descriptor.WRITER.write(output, this.targetDescriptor);
+        ModPacketWriters.PLANE_POSITION.write(output, this.newPosition);
     }
 
     @Override
