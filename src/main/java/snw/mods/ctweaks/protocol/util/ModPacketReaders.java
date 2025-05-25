@@ -1,5 +1,7 @@
 package snw.mods.ctweaks.protocol.util;
 
+import it.unimi.dsi.fastutil.Pair;
+import it.unimi.dsi.fastutil.objects.ObjectObjectImmutablePair;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.json.JSONComponentSerializer;
@@ -40,6 +42,14 @@ public final class ModPacketReaders {
             return new Rectangle(width, height);
         };
         ORIENTATION = enumReader(Orientation.class);
+    }
+
+    public static <T, R> PacketReader<Pair<T, R>> pairReader(PacketReader<T> tReader, PacketReader<R> rReader) {
+        return input -> {
+            T t = tReader.read(input);
+            R r = rReader.read(input);
+            return new ObjectObjectImmutablePair<>(t, r);
+        };
     }
 
     private ModPacketReaders() {

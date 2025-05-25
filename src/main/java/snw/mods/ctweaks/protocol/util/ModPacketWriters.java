@@ -1,5 +1,6 @@
 package snw.mods.ctweaks.protocol.util;
 
+import it.unimi.dsi.fastutil.Pair;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.json.JSONComponentSerializer;
@@ -33,6 +34,15 @@ public final class ModPacketWriters {
             final int height = rectangle.height();
             output.writeInt(width);
             output.writeInt(height);
+        };
+    }
+
+    public static <T, R> PacketWriter<Pair<T, R>> pairWriter(PacketWriter<T> tWriter, PacketWriter<R> rWriter) {
+        return (output, pair) -> {
+            T t = pair.left();
+            R r = pair.right();
+            tWriter.write(output, t);
+            rWriter.write(output, r);
         };
     }
 
