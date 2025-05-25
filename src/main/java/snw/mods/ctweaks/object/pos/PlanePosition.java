@@ -26,9 +26,10 @@ public record PlanePosition(
         };
     }
 
+    @SuppressWarnings("ConstantValue") // We should force the check
     public PlanePosition {
-        Preconditions.checkArgument(x > 0, "x must be positive");
-        Preconditions.checkArgument(y > 0, "y must be positive");
+        Preconditions.checkArgument(x >= 0, "x must not be negative");
+        Preconditions.checkArgument(y >= 0, "y must not be negative");
     }
 
     public interface Getter {
