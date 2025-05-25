@@ -41,7 +41,7 @@ public class ClientboundUpdatePlayerFaceRendererPacket extends Packet<Clientboun
         super(input);
         this.id = input.readInt();
         this.target = readNullable(input, PacketReaders.UUID);
-        this.position = readNullable(input, ModPacketReaders.PLANE_POSITION);
+        this.position = readNullable(input, PlanePosition.READER);
         this.size = readNullable(input, ByteArrayDataInput::readInt);
     }
 
@@ -54,7 +54,7 @@ public class ClientboundUpdatePlayerFaceRendererPacket extends Packet<Clientboun
     protected void doSerialization(ByteArrayDataOutput output) {
         output.writeInt(this.id);
         writeNullable(output, this.target, PacketWriters.UUID);
-        writeNullable(output, this.position, ModPacketWriters.PLANE_POSITION);
+        writeNullable(output, this.position, PlanePosition.WRITER);
         writeNullable(output, this.size, ByteArrayDataOutput::writeInt);
     }
 

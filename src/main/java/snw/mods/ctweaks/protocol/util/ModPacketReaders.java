@@ -17,8 +17,10 @@ import static snw.lib.protocol.io.PacketReaders.enumReader;
 public final class ModPacketReaders {
     public static final PacketReader<Key> NAMESPACED_KEY;
     public static final PacketReader<Component> COMPONENT;
-    public static final PacketReader<PlanePosition> PLANE_POSITION;
-    public static final PacketReader<Rectangle> RECTANGLE;
+    @Deprecated(forRemoval = true)
+    public static final PacketReader<PlanePosition> PLANE_POSITION = PlanePosition.READER;
+    @Deprecated(forRemoval = true)
+    public static final PacketReader<Rectangle> RECTANGLE = Rectangle.READER;
     public static final PacketReader<@Nullable Orientation> ORIENTATION;
 
     static {
@@ -30,16 +32,6 @@ public final class ModPacketReaders {
         COMPONENT = input -> {
             final String raw = input.readUTF();
             return JSONComponentSerializer.json().deserialize(raw);
-        };
-        PLANE_POSITION = input -> {
-            final int x = input.readInt();
-            final int y = input.readInt();
-            return new PlanePosition(x, y);
-        };
-        RECTANGLE = input -> {
-            final int width = input.readInt();
-            final int height = input.readInt();
-            return new Rectangle(width, height);
         };
         ORIENTATION = enumReader(Orientation.class);
     }

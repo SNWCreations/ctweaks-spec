@@ -66,8 +66,8 @@ public class ClientboundUpdateGridLayoutPacket extends Packet<ClientboundPacketH
         super(input);
         this.id = input.readInt();
         this.newElements = readNullable(input, in -> readCollection(in, ArrayList::new, IntKeyed.Descriptor.READER));
-        this.newPosition = readNullable(input, ModPacketReaders.PLANE_POSITION);
-        this.newRange = readNullable(input, optionalReader(ModPacketReaders.RECTANGLE));
+        this.newPosition = readNullable(input, PlanePosition.READER);
+        this.newRange = readNullable(input, optionalReader(Rectangle.READER));
         this.rowSpacing = readNullable(input, ByteArrayDataInput::readInt);
         this.columnSpacing = readNullable(input, ByteArrayDataInput::readInt);
         this.rowCount = readNullable(input, ByteArrayDataInput::readInt);
@@ -83,8 +83,8 @@ public class ClientboundUpdateGridLayoutPacket extends Packet<ClientboundPacketH
     protected void doSerialization(ByteArrayDataOutput output) {
         output.writeInt(this.id);
         writeNullable(output, this.newElements, (out, list) -> writeCollection(out, list, IntKeyed.Descriptor.WRITER));
-        writeNullable(output, this.newPosition, ModPacketWriters.PLANE_POSITION);
-        writeNullable(output, this.newRange, optionalWriter(ModPacketWriters.RECTANGLE));
+        writeNullable(output, this.newPosition, PlanePosition.WRITER);
+        writeNullable(output, this.newRange, optionalWriter(Rectangle.WRITER));
         writeNullable(output, this.rowSpacing, ByteArrayDataOutput::writeInt);
         writeNullable(output, this.columnSpacing, ByteArrayDataOutput::writeInt);
         writeNullable(output, this.rowCount, ByteArrayDataOutput::writeInt);

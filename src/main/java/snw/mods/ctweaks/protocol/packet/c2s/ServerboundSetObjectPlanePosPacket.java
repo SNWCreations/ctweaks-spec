@@ -29,11 +29,11 @@ public class ServerboundSetObjectPlanePosPacket extends Packet<ServerboundPacket
     public static final String TYPE = "set_plane_pos";
 
     private static PacketReader<Pair<IntKeyed.Descriptor, PlanePosition>> targetPairReader() {
-        return pairReader(IntKeyed.Descriptor.READER, ModPacketReaders.PLANE_POSITION);
+        return pairReader(IntKeyed.Descriptor.READER, PlanePosition.READER);
     }
 
     private static PacketWriter<Pair<IntKeyed.Descriptor, PlanePosition>> targetPairWriter() {
-        return pairWriter(IntKeyed.Descriptor.WRITER, ModPacketWriters.PLANE_POSITION);
+        return pairWriter(IntKeyed.Descriptor.WRITER, PlanePosition.WRITER);
     }
 
     private final List<Pair<IntKeyed.Descriptor, PlanePosition>> targets;

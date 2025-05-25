@@ -59,8 +59,8 @@ public class ClientboundUpdateLinearLayoutPacket extends Packet<ClientboundPacke
         super(input);
         this.id = input.readInt();
         this.newElements = readNullable(input, in -> readCollection(in, ArrayList::new, IntKeyed.Descriptor.READER));
-        this.newPosition = readNullable(input, ModPacketReaders.PLANE_POSITION);
-        this.newRange = readNullable(input, optionalReader(ModPacketReaders.RECTANGLE));
+        this.newPosition = readNullable(input, PlanePosition.READER);
+        this.newRange = readNullable(input, optionalReader(Rectangle.READER));
         this.newOrientation = ModPacketReaders.ORIENTATION.read(input);
         this.newSpacing = readNullable(input, ByteArrayDataInput::readInt);
     }
@@ -74,8 +74,8 @@ public class ClientboundUpdateLinearLayoutPacket extends Packet<ClientboundPacke
     protected void doSerialization(ByteArrayDataOutput output) {
         output.writeInt(this.id);
         writeNullable(output, this.newElements, (out, list) -> writeCollection(out, list, IntKeyed.Descriptor.WRITER));
-        writeNullable(output, this.newPosition, ModPacketWriters.PLANE_POSITION);
-        writeNullable(output, this.newRange, optionalWriter(ModPacketWriters.RECTANGLE));
+        writeNullable(output, this.newPosition, PlanePosition.WRITER);
+        writeNullable(output, this.newRange, optionalWriter(Rectangle.WRITER));
         PacketHelper.writeEnum(output, this.newOrientation);
         writeNullable(output, this.newSpacing, ByteArrayDataOutput::writeInt);
     }

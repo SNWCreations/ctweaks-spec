@@ -50,7 +50,7 @@ public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacke
         super(input);
         this.id = input.readInt();
         this.text = readNullable(input, ModPacketReaders.COMPONENT);
-        this.newPosition = readNullable(input, ModPacketReaders.PLANE_POSITION);
+        this.newPosition = readNullable(input, PlanePosition.READER);
         this.noShadow = readNullable(input, ByteArrayDataInput::readBoolean);
         this.scale = readNullable(input, ByteArrayDataInput::readFloat);
         this.outlineColor = readNullable(input, ByteArrayDataInput::readInt);
@@ -65,7 +65,7 @@ public class ClientboundUpdateTextRendererPacket extends Packet<ClientboundPacke
     protected void doSerialization(ByteArrayDataOutput output) {
         output.writeInt(this.id);
         writeNullable(output, this.text, ModPacketWriters.COMPONENT);
-        writeNullable(output, this.newPosition, ModPacketWriters.PLANE_POSITION);
+        writeNullable(output, this.newPosition, PlanePosition.WRITER);
         writeNullable(output, this.noShadow, ByteArrayDataOutput::writeBoolean);
         writeNullable(output, this.scale, ByteArrayDataOutput::writeFloat);
         writeNullable(output, this.outlineColor, ByteArrayDataOutput::writeInt);
